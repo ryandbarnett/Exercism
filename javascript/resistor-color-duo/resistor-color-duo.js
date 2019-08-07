@@ -7,10 +7,9 @@ const COLORS = ['black', 'brown', 'red', 'orange', 'yellow', 'green', 'blue', 'v
 
 export const value = (colors) => {
   let value = 0;
-  if (colors[0] !== 'black') {
-    value += COLORS.indexOf(colors[0]) * 10;
-  }
-  value += COLORS.indexOf(colors[1]);
+  colors.forEach((color, index) => {
+    const multiplier = index ? 1 : 10;
+    value += COLORS.indexOf(color) * multiplier;
+  })
   return value;
-
 };
