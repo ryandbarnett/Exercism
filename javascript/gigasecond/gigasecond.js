@@ -3,6 +3,7 @@
 // convenience to get you started writing code faster.
 //
 
-export const gigasecond = () => {
-  
+export const gigasecond = (startDate) => {
+  startDate.setUTCSeconds(startDate.getUTCSeconds() + 1000000000);
+  return startDate;
 };
