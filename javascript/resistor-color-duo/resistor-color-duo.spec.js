@@ -5,7 +5,7 @@ describe('Resistor Colors', () => {
     expect(value(['brown', 'black'])).toEqual(10);
   });
 
-  xtest('Blue and grey', () => {
+  test('Blue and grey', () => {
     expect(value(['blue', 'grey'])).toEqual(68);
   });
 
