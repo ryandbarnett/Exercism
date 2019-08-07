@@ -9,7 +9,7 @@ describe('Resistor Colors', () => {
     expect(value(['blue', 'grey'])).toEqual(68);
   });
 
-  xtest('Yellow and violet', () => {
+  test('Yellow and violet', () => {
     expect(value(['yellow', 'violet'])).toEqual(47);
   });
 
