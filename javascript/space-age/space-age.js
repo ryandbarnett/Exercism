@@ -3,6 +3,15 @@
 // convenience to get you started writing code faster.
 //
 
-export const age = () => {
-  throw new Error("Remove this statement and implement this function");
+export const age = (planet, age_seconds) => {
+  switch (planet) {
+    case 'earth':
+      return Number((age_seconds / 31557600).toFixed(2));
+      break;
+    case 'mercury':
+      return Number((age_seconds / (31557600 * 0.2408467)).toFixed(2));
+      break;
+    default:
+      return 'error';
+  }
 };
