@@ -3,6 +3,23 @@
 // convenience to get you started writing code faster.
 //
 
-export const toRna = () => {
-  throw new Error("Remove this statement and implement this function");
+export const toRna = (chars) => {
+  return chars.split('').map(char => {
+    switch (char) {
+      case 'G':
+        return 'C';
+        break;
+      case 'C':
+        return 'G';
+        break;
+      case 'T':
+        return 'A';
+        break;
+      case 'A':
+        return 'U';
+        break;
+      default:
+        return '';
+    }
+  }).join('')
 };
