@@ -3,6 +3,6 @@
 // convenience to get you started writing code faster.
 //
 
-export const isPangram = () => {
-  
+export const isPangram = (str) => {
+  return new Set(str.toLowerCase().replace(/\W|\d|_/g,'').split('')).size === 26;
 };
