@@ -4,11 +4,30 @@
 //
 
 export class Triangle {
-  constructor() {
-    throw new Error("Remove this statement and implement this function");
+  constructor(a, b, c) {
+    this.a = a;
+    this.b = b;
+    this.c = c;
   }
 
   kind() {
-    throw new Error("Remove this statement and implement this function");
+    const {a,b,c} = this;
+    if (a <= 0 || b <= 0 || c <= 0) {
+      throw new Error()
+    }
+
+    if (a + b <= c || b + c <= a || a + c <= b) {
+      throw new Error()
+    }
+
+    if (a === b && a === c) {
+      return 'equilateral';
+    }
+
+    if (a === b || a === c || b === c) {
+      return 'isosceles';
+    }
+
+    return 'scalene';
   }
 }
