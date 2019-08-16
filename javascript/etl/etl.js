@@ -3,6 +3,11 @@
 // convenience to get you started writing code faster.
 //
 
-export const transform = (old) => {
-  
+export const transform = (oldValues) => {
+  return Object.keys(oldValues).reduce((acc, value) => {
+    oldValues[value].forEach(letter => {
+      acc[letter.toLowerCase()] = Number(value)
+    })
+    return acc;
+  }, {})
 };
