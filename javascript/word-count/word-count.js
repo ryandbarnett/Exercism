@@ -7,15 +7,13 @@ export class Words {
   count(words) {
     words = words.toLowerCase().trim();
     var regex = /\n|\t| +/;
-    const array = words.split(regex);
-    const result = array.reduce((acc, cur) => {
+    const result = words.split(regex).reduce((acc, cur) => {
       if (!acc[cur] || cur === 'constructor') {
         acc[cur] = 0;
       }
       acc[cur]++;
       return acc;
     }, {});
-    console.log(result);
     return result;
   }
 }
