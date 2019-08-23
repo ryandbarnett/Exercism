@@ -4,56 +4,28 @@
 //
 
 export const toRoman = (n) => {
-  const numerals = [];
-  numerals.push("M".repeat(Math.floor(n / 1000)));
-  n = n % 1000;
+  let numerals = '';
+  
+  function extract(c, r) {
+    while (n >= c) {
+      numerals += r;
+      n -= c;
+    }
+  };
 
-  if (n >= 900) {
-    numerals.push("CM");
-    n = n - 900;
-  }
+  extract(1000, 'M');
+  extract(900,  'CM');
+  extract(500,  'D');
+  extract(400,  'CD');
+  extract(100,  'C');
+  extract(90,   'XC');
+  extract(50,   'L');
+  extract(40,   'XL');
+  extract(10,   'X');
+  extract(9,    'IX');
+  extract(5,    'V');
+  extract(4,    'IV');
+  extract(1,    'I');
 
-  numerals.push("D".repeat(Math.floor(n / 500)));
-  n = n % 500;
-
-  if (n >= 400) {
-    numerals.push("CD");
-    n = n - 400;
-  }
-
-  numerals.push("C".repeat(Math.floor(n / 100)));
-  n = n % 100;
-
-  if (n >= 90) {
-    numerals.push("XC");
-    n = n - 90;
-  }
-
-  numerals.push("L".repeat(Math.floor(n / 50)));
-  n = n % 50;
-
-  if (n >= 40) {
-    numerals.push("XL");
-    n = n - 40;
-  }
-
-  numerals.push("X".repeat(Math.floor(n / 10)));
-  n = n % 10;
-
-  if (n === 9) {
-    numerals.push("IX");
-    n = n - 9;
-  }
-
-  numerals.push("V".repeat(Math.floor(n / 5)));
-  n = n % 5;
-
-  if (n === 4) {
-    numerals.push("IV");
-    n = n - 4;
-  }
-
-  numerals.push("I".repeat(n));
-
-  return numerals.join('');
+  return numerals;
 };
