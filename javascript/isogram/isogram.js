@@ -3,6 +3,8 @@
 // convenience to get you started writing code faster.
 //
 
-export const isIsogram = () => {
-  throw new Error("Remove this statement and implement this function");
+export const isIsogram = (s) => {
+  return s.toLowerCase().replace(/[-| ]+/,'').split('').sort().every((char, i, chars) => {
+    return char !== chars[i + 1]
+  });
 };
