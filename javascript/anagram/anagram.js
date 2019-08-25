@@ -4,11 +4,19 @@
 //
 
 export class Anagram {
-  constructor() {
-    throw new Error("Remove this statement and implement this function");
+  constructor(word) {
+    this.word = word.toLowerCase();
   }
 
-  matches() {
-    throw new Error("Remove this statement and implement this function");
+  matches(list) {
+    return list.filter(word => {
+      word = word.toLowerCase();
+      return this.word.split('').every(char => {
+        const givenWordLetterCount = this.word.split('').filter(letter => letter === char).length;
+        const currentWordLetterCount = word.split('').filter(letter => letter === char).length;
+        const areLettersUsedOnce = givenWordLetterCount === currentWordLetterCount;
+        return areLettersUsedOnce && word.includes(char) && word.length === this.word.length && word !== this.word;
+      });
+    });
   }
 }
