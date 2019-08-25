@@ -4,11 +4,22 @@
 //
 
 export class PhoneNumber {
-  constructor() {
-    throw new Error("Remove this statement and implement this function");
+  constructor(input) {
+    this.input = input;
   }
 
   number() {
-    throw new Error("Remove this statement and implement this function");
+    const cleaned = this.input.replace(/\W+/g,'');
+    if (/\D/.test(cleaned)) return null;
+    let regex = /0|1/;
+    if (cleaned.length === 11 && cleaned[0] === '1') {
+      if (regex.test(cleaned[1]) || regex.test(cleaned[4])) return null;
+      return cleaned.slice(1);
+    } else if (cleaned.length === 10) {
+      if (regex.test(cleaned[0]) || regex.test(cleaned[3])) return null;
+      return cleaned;
+    } else {
+      return null;
+    }
   }
 }
