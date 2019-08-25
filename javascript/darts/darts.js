@@ -4,7 +4,17 @@
 //
 
 export const solve = (x, y) => {
-  // points 0 1 5 10
-  // radii  > 10 5 1
-  console.log(Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)))
+  const distance = findDistance(x, y);
+  return calcPoints(distance);
 };
+
+const calcPoints = (distance) => {
+  if (distance > 10) return 0;
+  if (distance > 5) return 1;
+  if (distance > 1) return 5;
+  if (distance >= 0) return 10;
+}
+
+const findDistance = (x, y) => {
+  return Math.sqrt(x ** 2 + y ** 2);
+}
