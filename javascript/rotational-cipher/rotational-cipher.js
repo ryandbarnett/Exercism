@@ -4,7 +4,9 @@
 //
 
 export class RotationalCipher {
-  static rotate() {
-    throw new Error("Remove this statement and implement this function");
+  static rotate(chars, num) {
+    return chars.split('').map((char, index) => {
+      return String.fromCharCode(chars.charCodeAt(index) + num);
+    }).join('');
   }
 }
