@@ -10,6 +10,17 @@ export class Clock {
   }
 
   calcHours(hours, mins) {
+    if (mins >= 60) {
+      hours = hours + Math.floor(mins / 60) % 24;
+    }
+    if (mins < 0) {
+      if (hours + Math.floor(mins / 60) < 0) {
+        hours = 24 + ((hours + Math.floor(mins / 60)) % 24);
+      } else {
+        hours = hours + Math.floor(mins / 60);
+      }
+    }
+
     if (hours < 0) {
       return 24 + (hours % 24);
     }
@@ -17,18 +28,7 @@ export class Clock {
   }
 
   calcMins(mins) {
-    if (mins >= 60) {
-      this.hours = this.hours + Math.floor(mins / 60) % 24;
-    }
-    if (mins < 0) {
-      if (this.hours + Math.floor(mins / 60) < 0) {
-        this.hours = 24 + ((this.hours + Math.floor(mins / 60)) % 24);
-      } else {
-        this.hours = this.hours + Math.floor(mins / 60);
-      }
-      return 60 + (mins % 60);
-    }
-    return mins % 60;
+    return mins < 0 ? 60 + (mins % 60) : mins % 60;
   }
 
   toString() {
@@ -36,12 +36,21 @@ export class Clock {
     return `${hours.toString().padStart(2, '0')}:${this.mins.toString().padStart(2, '0')}`;
   }
 
-  plus() {
+  plus(n) {
+    const { hours, mins, calcMins, calcHours } = this;
+    this.mins = calcMins(mins + n);
+    this.hours = calcHours(hours + Math.floor((mins + n) / 60), mins);
+    return this;
   }
 
-  minus() {
+  minus(n) {
+    const { hours, mins, calcMins, calcHours } = this;
+    this.mins = calcMins(mins - n);
+    this.hours = calcHours(hours + Math.floor((mins - n) / 60) % 24, mins);
+    return this;
   }
 
-  equals() {
+  equals(otherClock) {
+    return otherClock.hours === this.hours && otherClock.mins === this.mins;
   }
 }
