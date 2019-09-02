@@ -4,10 +4,12 @@
 //
 
 export class Clock {
-  constructor() {
+  constructor(hour) {
+    this.hour = hour.toString().padStart(2, '0');
   }
 
   toString() {
+    return `${this.hour}:00`;
   }
 
   plus() {
