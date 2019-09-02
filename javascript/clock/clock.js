@@ -4,12 +4,31 @@
 //
 
 export class Clock {
-  constructor(hour) {
-    this.hour = hour.toString().padStart(2, '0');
+  constructor(hours = '0', mins = '0') {
+    this.hours = this.calcHours(hours, mins).toString().padStart(2, '0');
+    this.mins = this.calcMins(mins).toString().padStart(2, '0');
+  }
+
+  calcHours(hours, mins) {
+    if (hours < 0) {
+      return 24 + (hours % 24);
+    }
+    return ((hours + Math.floor(mins / 60)) % 24);
+  }
+
+  addExtraMinsToHours(mins) {
+    Math.floor(mins / 60)
+  }
+
+  calcMins(mins) {
+    if (mins < 0) {
+      return 60 + (mins % 60);
+    }
+    return mins % 60;
   }
 
   toString() {
-    return `${this.hour}:00`;
+    return `${this.hours}:${this.mins}`;
   }
 
   plus() {
