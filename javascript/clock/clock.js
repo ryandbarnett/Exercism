@@ -13,11 +13,11 @@ export class Clock {
     if (hours < 0) {
       return 24 + (hours % 24);
     }
-    return ((hours + Math.floor(mins / 60)) % 24);
+    return ((hours + this.calcExtraMins(mins)) % 24);
   }
 
-  addExtraMinsToHours(mins) {
-    Math.floor(mins / 60)
+  calcExtraMins(mins) {
+    return Math.floor(mins / 60);
   }
 
   calcMins(mins) {
