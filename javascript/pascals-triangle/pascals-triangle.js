@@ -4,15 +4,29 @@
 //
 
 export class Triangle {
-  constructor() {
-    throw new Error("Remove this statement and implement this function");
+  constructor(numRows) {
+    this.n = numRows;
+    this.result = this.rows;
   }
 
   get lastRow() {
-    throw new Error("Remove this statement and implement this function");
+    return this.result[this.result.length - 1];
   }
 
   get rows() {
-    throw new Error("Remove this statement and implement this function");
+    const triangle = [];
+    for (let row = 0; row < this.n; row++) {
+      triangle.push([])
+      for (let col = 0; col <= row; col++) {
+        if (triangle[row - 1] && triangle[row - 1][col - 1] && triangle[row - 1][col]) {
+          const prevNum1 = triangle[row - 1][col - 1];
+          const prevNum2 = triangle[row - 1][col];
+          triangle[row][col] = prevNum1 + prevNum2;
+        } else {
+          triangle[row][col] = 1;
+        }
+      }
+    }
+    return triangle;
   }
 }
