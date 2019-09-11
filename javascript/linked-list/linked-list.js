@@ -17,14 +17,20 @@ export class LinkedList {
   }
 
   shift() {
+    return this.list.shift();
   }
 
-  unshift() {
+  unshift(n) {
+    this.list.unshift(n);
   }
 
-  delete() {
+  delete(n) {
+    const result = this.list.indexOf(n);
+    if (result === -1) return;
+    this.list.splice(result, 1);
   }
 
   count() {
+    return this.list.length;
   }
 }
